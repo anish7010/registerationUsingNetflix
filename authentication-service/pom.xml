@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.microservices</groupId>
-	<artifactId>registeration-service</artifactId>
+	<artifactId>authentication-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>registeration-service</name>
+	<name>authentication-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -29,10 +29,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -61,11 +57,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -81,7 +72,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			
 		</dependencies>
 	</dependencyManagement>
 

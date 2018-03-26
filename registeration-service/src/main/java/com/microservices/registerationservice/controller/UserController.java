@@ -31,20 +31,41 @@ public class UserController {
 		return userRepository.findAll();
 	}
 	
-	@GetMapping("/users/{id}")
-	public Optional<User> showUsers(@PathVariable int id) {
-		 Optional<User> user = userRepository.findById(id);
+	@GetMapping("/users/{uName}")
+	public User showUsers(@PathVariable String uName) {
+		 User user = userRepository.findById(uName).get();
 		 return user;
 	}
 	
-	@PutMapping("/users/{id}")
-	public void updateUser(@RequestBody User user) {
-		userRepository.save(user);
+	@PutMapping("/users/{uName}")
+	public User updateUser(@RequestBody User user) {
+		return userRepository.save(user);
 	}
 	
-	@DeleteMapping("/users/{id}")
-	public void deleteUser(@PathVariable int id) {
-		userRepository.deleteById(id);
+	@DeleteMapping("/users/{uName}")
+	public void deleteUser(@PathVariable String uName) {
+		userRepository.deleteById(uName);
 	}
+	
+	//to validate
+	@PostMapping("user-authenticate")
+	public String validation(@RequestBody User user) {
+		
+		Optional<User> userToBeValidated = userRepository.findById(user.getUserName());
+		
+		if(!userToBeValidated.isPresent())
+			return "Invalid user";
+		
+		else {
+			User actualUser = userToBeValidated.get();
+			if(actualUser.getPassword().equals(user.getPassword()))
+				return "Welcome, "+actualUser.getName();
+			
+			else
+				return "Please type a valid password";
+		}
+	}		
 	
 }
+
+	

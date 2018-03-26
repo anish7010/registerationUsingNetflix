@@ -1,20 +1,28 @@
 package com.microservices.registerationservice.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 
 @Entity
 public class User {
 	
-	@Id
+	@GeneratedValue
 	private int id;
 	
 	private String name;
+	@Id
 	private String userName;
 	private String password;
 	
 	public User(){
 		
+	}
+	
+	public User(String userName, String password ) {
+		this.userName = userName;
+		this.password = password;
 	}
 
 	public User(int id, String name, String userName, String password) {
