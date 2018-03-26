@@ -1,52 +1,66 @@
 package com.microservices.registerationservice.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class User {
-  
-  private String name;
-  private long number;
-  private String user_name;
-  private String password;
-  
-  public User(String name, long number, String user_name, String password) {
-    super();
-    this.name = name;
-    this.number = number;
-    this.user_name = user_name;
-    this.password = password;
-  }
+	
+	@Id
+	private int id;
+	
+	private String name;
+	private String userName;
+	private String password;
+	
+	public User(){
+		
+	}
 
-  public String getName() {
-    return name;
-  }
+	public User(int id, String name, String userName, String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.userName = userName;
+		this.password = password;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public int getId() {
+		return id;
+	}
 
-  public long getNumber() {
-    return number;
-  }
+	public void setNumber(int id) {
+		this.id = id;
+	}
 
-  public void setNumber(long number) {
-    this.number = number;
-  }
+	public String getName() {
+		return name;
+	}
 
-  public String getUser_name() {
-    return user_name;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public void setUser_name(String user_name) {
-    this.user_name = user_name;
-  }
+	public String getUserName() {
+		return userName;
+	}
 
-  public String getPassword() {
-    return password;
-  }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
-  
-  
-  
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", userName=" + userName + ", password=" + password + "]";
+	}
+	
+	
 }
