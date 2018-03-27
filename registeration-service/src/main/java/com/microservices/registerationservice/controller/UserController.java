@@ -32,7 +32,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/users/{uName}")
-	public User showUsers(@PathVariable String uName) {
+	public User showUser(@PathVariable String uName) {
 		 User user = userRepository.findById(uName).get();
 		 return user;
 	}
@@ -46,25 +46,6 @@ public class UserController {
 	public void deleteUser(@PathVariable String uName) {
 		userRepository.deleteById(uName);
 	}
-	
-	//to validate
-	@PostMapping("user-authenticate")
-	public String validation(@RequestBody User user) {
-		
-		Optional<User> userToBeValidated = userRepository.findById(user.getUserName());
-		
-		if(!userToBeValidated.isPresent())
-			return "Invalid user";
-		
-		else {
-			User actualUser = userToBeValidated.get();
-			if(actualUser.getPassword().equals(user.getPassword()))
-				return "Welcome, "+actualUser.getName();
-			
-			else
-				return "Please type a valid password";
-		}
-	}		
 	
 }
 
